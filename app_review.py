@@ -94,7 +94,7 @@ input_df_scaled = cv1.transform(input_df)
     
 
 
-pred = nlp_model.predict(input_df_scaled.values)
+pred = nlp_model.predict(input_df_scaled.Text)
 
 
 
