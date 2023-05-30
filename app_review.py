@@ -74,6 +74,7 @@ input_df = pd.DataFrame({"Text":[Review]})
 
 
 ### Scale the new input data###
+from sklearn.feature_extraction.text import CountVectorizer
 cv1 = CountVectorizer(stop_words='english') ### Getting Rid Of Stop Words ###
 
 input_df_scaled = cv1.transform(input_df)
