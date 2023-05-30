@@ -69,7 +69,7 @@ from joblib import load
 
 nlp_model = load('mnb_model.pkl')
 
-input_df = [[Review]]
+input_df = pd.DataFrame({"Text":[Review]})
     
 ### For fit StandartScaler ###
 df=pd.read_csv("sampled_data.csv")
