@@ -84,6 +84,7 @@ y = df.sentiment
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Scale the data
+from sklearn.feature_extraction.text import CountVectorizer
 cv1 = CountVectorizer(stop_words='english') ### Getting Rid Of Stop Words ###
 
 ### Transforming Our Data with CountVectorizer ###
@@ -93,8 +94,6 @@ X_test_cv1  = cv1.transform(X_test)
 
 
 ### Scale the new input data###
-
-from sklearn.feature_extraction.text import CountVectorizer
 
 
 input_df_scaled = cv1.transform(input_df)
