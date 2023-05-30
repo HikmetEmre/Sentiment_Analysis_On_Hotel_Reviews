@@ -71,30 +71,10 @@ nlp_model = load('mnb_model.pkl')
 
 input_df = pd.DataFrame({"Text":[Review]})
     
-### For fit StandartScaler ###
-df=pd.read_csv("sampled_data.csv")
-
-# Define X and y
-X = df.text
-
-y = df.sentiment
-
-
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
-# Scale the data
-from sklearn.feature_extraction.text import CountVectorizer
-cv1 = CountVectorizer(stop_words='english') ### Getting Rid Of Stop Words ###
-
-### Transforming Our Data with CountVectorizer ###
-X_train_cv1 = cv1.fit_transform(X_train)
-X_test_cv1  = cv1.transform(X_test)
-
 
 
 ### Scale the new input data###
-
+cv1 = CountVectorizer(stop_words='english') ### Getting Rid Of Stop Words ###
 
 input_df_scaled = cv1.transform(input_df)
 
