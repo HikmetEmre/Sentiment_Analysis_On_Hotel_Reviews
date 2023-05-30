@@ -63,6 +63,25 @@ Review = st.sidebar.text_input("**:blue[A text as feedback about hotel guests ex
 
 
 #---------------------------------------------------------------------------------------------------------------------
+### Tokenization and Model Building ###
+X = df.text
+y = df.sentiment
+
+### Spliting Our Data as Train and Test ###
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+
+
+from sklearn.feature_extraction.text import CountVectorizer
+
+cv1 = CountVectorizer(stop_words='english') ### Getting Rid Of Stop Words ###
+
+### Transforming Our Data with CountVectorizer ###
+X_train_cv1 = cv1.fit_transform(X_train)
+X_test_cv1  = cv1.transform(X_test)
+
+
 
 ### Recall Model ###
 from joblib import load
@@ -70,10 +89,12 @@ from joblib import load
 nlp_model = load('mnb_model.pkl')
 
 input_df = pd.DataFrame({"Text":[Review]})
+
+input_df_scaled = cv1.transform(input_df)
     
 
 
-pred = nlp_model.predict(input_df.values)
+pred = nlp_model.predict(input_df_scaled.values)
 
 
 
