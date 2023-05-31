@@ -70,16 +70,17 @@ Review = st.sidebar.text_input("**:blue[A text as feedback about hotel guests ex
 from joblib import load
 
 nlp_model = load('mnb_model.pkl')
-
-input_df = [[Review]]
-
 cv1 = load('cv1_model.pkl')
 
-input_df_scaled = cv1.transform(input_df)
+ # Preprocess the input data
+ preprocessed_review = preprocess_data(Review)
+
+ # Transform the preprocessed review using the vectorizer
+ transformed_review = cv1.transform([preprocessed_review])
+
     
 
-
-pred = nlp_model.predict(input_df_scaled)
+pred = nlp_model.predict(transformed_review)
 
 
 
