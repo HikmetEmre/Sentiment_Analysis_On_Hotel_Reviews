@@ -65,6 +65,11 @@ Review = st.sidebar.text_input("**:blue[A text as feedback about hotel guests ex
 #---------------------------------------------------------------------------------------------------------------------
 
 
+def preprocess_data(text):
+    # Apply any necessary preprocessing steps here
+    preprocessed_text = text.lower()  # Example: Convert text to lowercase
+    return preprocessed_text
+
 
 ### Recall Model ###
 from joblib import load
