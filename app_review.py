@@ -71,7 +71,7 @@ from joblib import load
 
 nlp_model = load('mnb_model.pkl')
 
-input_df = pd.DataFrame({"Text":[Review]})
+input_df = [[Review]]
 
 cv1 = load('cv1_model.pkl')
 
@@ -113,7 +113,7 @@ if st.sidebar.button("Submit"):
    
 
 
-    st.table(pred)
+    st.table(results_df)
 
     if pred == 'Positive':
         st.image("https://raw.githubusercontent.com/HikmetEmre/Sentiment_Analysis_On_Hotel_Reviews/main/positive%20image.png")
